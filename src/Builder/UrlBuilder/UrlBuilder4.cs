@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Builder.UrlBuilder;
+﻿namespace Builder.UrlBuilder;
 
 public class UrlBuilder4 : object
 {
@@ -32,7 +30,7 @@ public class UrlBuilder4 : object
 	}
 
 	// Delegate | Function Builder
-	public void WithQueryParam(Action<QueryParamsBuilder> builderConfiguration)
+	public void WithQueryParam(System.Action<QueryParamsBuilder> builderConfiguration)
 	{
 		builderConfiguration.Invoke(QueryParams);
 	}

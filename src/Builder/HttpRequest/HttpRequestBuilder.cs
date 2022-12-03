@@ -68,11 +68,3 @@ internal class HttpRequestBuilder : IHttpRequestBuilder,
 		return this;
 	}
 }
-
-public static class HttpRequestFactory
-{
-	public static IHttpRequestMethodBuilder NewRequest()
-	{
-		return new HttpRequestBuilder();
-	}
-}
