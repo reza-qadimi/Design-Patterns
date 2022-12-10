@@ -13,7 +13,21 @@ public class FirstBreadthIterator : object, IIterator<Node>
 		Items.Enqueue(node);
 	}
 
-	public Node? Item { get; private set; }
+	public Node? _item;
+
+	public Node? Item
+	{
+		get
+		{
+			MoveNext();
+
+			return _item;
+		}
+		set
+		{
+			_item = value;
+		}
+	}
 
 	private System.Collections.Generic.Queue<Node> Items { get; }
 
@@ -25,11 +39,11 @@ public class FirstBreadthIterator : object, IIterator<Node>
 		return result;
 	}
 
-	public void MoveNext()
+	private void MoveNext()
 	{
-		Item = Items.Dequeue();
+		_item = Items.Dequeue();
 
-		foreach (var item in Item.GetChildren())
+		foreach (var item in _item.GetChildren())
 		{
 			Items.Enqueue(item: item);
 		}

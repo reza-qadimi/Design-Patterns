@@ -4,7 +4,7 @@ public interface IIterator<T>
 {
 	bool HasAny();
 
-	void MoveNext();
-
 	T? Item { get; }
+
+	//void MoveNext();
 }

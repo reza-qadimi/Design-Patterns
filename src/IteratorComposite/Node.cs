@@ -33,7 +33,7 @@ public class Node : object
 
 		while(iterator.HasAny())
 		{
-			iterator.MoveNext();
+			//iterator.MoveNext();
 
 			var node = iterator.Item;
 

@@ -18,9 +18,12 @@ var iterator = root.CreateIterator();
 
 while (iterator.HasAny())
 {
-	iterator.MoveNext();
+	//iterator.MoveNext();
 
 	var node = iterator.Item;
 
-	System.Console.WriteLine(value: node.Name);
+	if (node != null)
+	{
+		System.Console.WriteLine(value: node.Name);
+	}
 }
