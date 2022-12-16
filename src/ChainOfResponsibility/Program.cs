@@ -12,22 +12,23 @@ public static class Program : object
 
 		var handler = GetHandler();
 
-		handler?.Handle(request);
+		var result =
+			handler?.Handle(request);
 
-		System.Console.WriteLine(request);
+		System.Console.WriteLine(value: result);
 
 		System.Console.ReadLine();
 
 		var packet = new Tcp.TcpPacket()
 		{
-			Message = "PRINT"
+			Message = "HAND_SHAKE"
 		};
 
 		var chain = CreateHandler();
 
-		chain.Handle(packet);
+		chain.Handle(request: packet);
 
-		System.Console.WriteLine(packet.Response);
+		System.Console.WriteLine(value: packet.Response);
 	}
 
 	private static Tcp.Base.IHandler<Tcp.TcpPacket> CreateHandler()
@@ -38,7 +39,7 @@ public static class Program : object
 			.With<Tcp.HandshakeHandler>()
 			.With<Tcp.PrintHandler>()
 			//TODO: move this from here
-			.With(Tcp.Base.NullHandler.Instance)
+			//.With(Tcp.Base.NullHandler.Instance)
 			.Build();
 
 		return chain;
