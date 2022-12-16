@@ -47,9 +47,9 @@ public static class Program : object
 	private static Text.Base.IHandler<string?>? GetHandler()
 	{
 		var handler =
-			new ChainOfResponsibility.Text.Base.ChainBuilder<string?>()
-			.With<ChainOfResponsibility.Text.TrimHandler>()
-			.With<ChainOfResponsibility.Text.UppercaseHandler>()
+			new Text.Base.ChainBuilder<string?>()
+			.With<Text.TrimHandler>()
+			.With<Text.UppercaseHandler>()
 			.Build();
 
 		return handler;
