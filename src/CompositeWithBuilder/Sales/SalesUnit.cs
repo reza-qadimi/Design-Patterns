@@ -2,9 +2,12 @@
 
 public abstract class SalesUnit : object
 {
-	public SalesUnit() : base()
+	protected SalesUnit(string name) : base()
 	{
+		Name = name;
 	}
+
+	public string Name { get; private set; }
 
 	public abstract int GetCredit();
 

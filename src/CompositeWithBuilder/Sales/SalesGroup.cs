@@ -2,18 +2,18 @@
 
 public class SalesGroup : SalesUnit
 {
-	public SalesGroup()
+	public SalesGroup(string name) : base(name)
 	{
-		Units =
+		Children =
 			new
 			System.Collections.Generic.List<SalesUnit>();
 	}
 
-	public System.Collections.Generic.IList<SalesUnit> Units { get; private set; }
+	public System.Collections.Generic.IList<SalesUnit> Children { get; private set; }
 
-	public SalesGroup AddUnit(SalesUnit unit)
+	public SalesGroup AddChild(SalesUnit unit)
 	{
-		Units.Add(unit);
+		Children.Add(unit);
 
 		return this;
 	}
@@ -22,7 +22,7 @@ public class SalesGroup : SalesUnit
 	{
 		var credits = 0;
 
-		foreach (var item in Units)
+		foreach (var item in Children)
 		{
 			credits += item.GetCredit();
 		}
@@ -36,7 +36,7 @@ public class SalesGroup : SalesUnit
 
 		var eachShare = amount / unitsCount;
 
-		foreach (var salesUnit in Units)
+		foreach (var salesUnit in Children)
 		{
 			salesUnit.PayCommission(eachShare);
 		}
@@ -46,7 +46,7 @@ public class SalesGroup : SalesUnit
 	{
 		var unitCount = 0;
 
-		foreach (var item in Units)
+		foreach (var item in Children)
 		{
 			unitCount += item.UnitsCount();
 		}

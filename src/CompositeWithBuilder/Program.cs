@@ -11,23 +11,23 @@ var output = node?.Render();
 System.Console.WriteLine(output);
 
 var newAgents1 =
-	new CompositeWithBuilder.Sales.SalesAgent();
+	new CompositeWithBuilder.Sales.SalesAgent(name: "Agent-01");
 
 var newAgents2 =
-	new CompositeWithBuilder.Sales.SalesAgent();
+	new CompositeWithBuilder.Sales.SalesAgent(name: "Agent-02");
 
 var newAgents3 =
-	new CompositeWithBuilder.Sales.SalesAgent();
+	new CompositeWithBuilder.Sales.SalesAgent(name: "Agent-03");
 
 var newGroup1 =
-	new CompositeWithBuilder.Sales.SalesGroup()
-	.AddUnit(newAgents1)
-	.AddUnit(newAgents3);
+	new CompositeWithBuilder.Sales.SalesGroup(name: "Group-01")
+	.AddChild(newAgents1)
+	.AddChild(newAgents3);
 
 var newGroup2 =
-	new CompositeWithBuilder.Sales.SalesGroup()
-	.AddUnit(newAgents2)
-	.AddUnit(newGroup1);
+	new CompositeWithBuilder.Sales.SalesGroup(name: "Group-01")
+	.AddChild(newAgents2)
+	.AddChild(newGroup1);
 
 newGroup2.PayCommission(amount: 100000);
 
@@ -42,3 +42,12 @@ System.Console.WriteLine(groupCredit1);
 System.Console.WriteLine(agentCredit1);
 System.Console.WriteLine(agentCredit2);
 System.Console.WriteLine(agentCredit3);
+
+
+
+var group = CompositeWithBuilder.SalesUnitBuilder.Create("Root")
+	.WithGroup(current => current.Named("Group1").WithAgent("Agent X").WithAgent("Agent Y"))
+	.WithAgent("AgentZ")
+	.Build();
+
+System.Console.WriteLine();
